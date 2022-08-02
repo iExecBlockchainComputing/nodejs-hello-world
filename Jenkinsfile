@@ -1,12 +1,18 @@
-@Library('jenkins-library@1.0.4') _
+@Library('global-jenkins-library@1.9.0') _
 
-def tasks = [:]
-tasks["nodejs"] = {
-    stage ("Build cloud-computing hello-world"){
-        def nativeImage = buildSimpleDocker_v2(dockerfileDir: 'cloud-computing',
-                dockerImageRepositoryName: 'nodejs-hello-world', imageprivacy: 'public')
-        sconeBuildAllTee(nativeImage: nativeImage, targetImageRepositoryName: 'nodejs-hello-world',
-                sconifyArgsPath: 'cloud-computing/sconify.args')
-    }
-}
-parallel tasks
+buildInfo = getBuildInfo()
+
+def nativeImage = buildSimpleDocker_v2(
+  buildInfo: buildInfo,
+  dockerfileDir: 'cloud-computing',
+  dockerImageRepositoryName: 'nodejs-hello-world',
+  imageprivacy: 'public'
+)
+
+sconeBuildUnlocked(
+  nativeImage:     nativeImage,
+  imageName:       'nodejs-hello-world',
+  imageTag:        buildInfo.imageTag,
+  sconifyArgsPath: 'cloud-computing/sconify.args',
+  sconifyVersion:  '5.7.1'
+)
