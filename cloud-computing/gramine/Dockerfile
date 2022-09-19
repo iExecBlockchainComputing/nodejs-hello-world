@@ -25,7 +25,7 @@ RUN python3 -B /var/tmp/finalize_manifest.py
 # Dummy key
 
 # sign image
-COPY $GRAMINE_DIR/signer-key.pem /signer-key.pem
+RUN openssl genrsa -out /signer-key.pem 2048
 RUN /graphene/python/graphene-sgx-sign \
         -libpal /graphene/Runtime/libpal-Linux-SGX.so \
         -key /signer-key.pem \
