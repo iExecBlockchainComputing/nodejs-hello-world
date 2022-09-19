@@ -62,5 +62,5 @@ loader.log_level =  "debug"
 #************for premain*********************
 sgx.allowed_files.manifest = "file:/entrypoint.manifest.sgx"
 libos.entrypoint = "file:/workplace/app/premain"
-app.main="/usr/bin/python3.8"
+app.main="/usr/bin/node"
 
