@@ -1,9 +1,8 @@
 FROM docker-regis.iex.ec/iexec-graphene-base:0.6.0
 
-RUN  curl -fsSL https://deb.nodesource.com/setup_18.x | -E bash - && apt-get install -y nodejs
-
-### install needed node dependencies
-RUN npm install figlet@1.x
+RUN apt-get update
+RUN apt-get install -y curl
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs
 
 ARG SOURCE_DIR=src
 ARG GRAMINE_DIR=gramine
@@ -15,6 +14,9 @@ COPY $SOURCE_DIR/app.js /workplace/app
 RUN sed -i "s#MAIN_FUNC=#MAIN_FUNC=/workplace/app/app.js#" /apploader.sh
 
 WORKDIR /workplace/app
+
+### install needed node dependencies (needs to be ran after WORKDIR has been specified)
+RUN npm install figlet@1.x
 
 # finalize manifest
 COPY $GRAMINE_DIR/entrypoint.manifest /
