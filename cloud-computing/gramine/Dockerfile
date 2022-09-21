@@ -1,8 +1,9 @@
 FROM docker-regis.iex.ec/iexec-graphene-base:0.6.0
 
-RUN apt-get update
-RUN apt-get install -y curl
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs
+RUN apt-get update \
+    && apt-get install -y curl \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs
 
 ARG SOURCE_DIR=src
 ARG GRAMINE_DIR=gramine
@@ -34,4 +35,5 @@ RUN /graphene/python/graphene-sgx-sign \
 
 RUN rm -rf /var/tmp/* \
     && rm -rf /graphene/python/graphene-sgx-sign /graphene/python/graphenelibos/sgx_sign.py \
-    && rm -rf /signer-key.pem
+    && rm -rf /signer-key.pem \
+    && rm -rf /var/lib/apt/lists/*
