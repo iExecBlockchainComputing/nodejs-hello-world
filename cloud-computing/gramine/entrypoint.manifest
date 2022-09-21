@@ -22,9 +22,8 @@ loader.insecure__use_cmdline_argv = 1
 
 
 # All trusted files and the user defined manifest specifications should be after this line
-sgx.enclave_size = "4G"
-sgx.thread_num = 32
-sys.stack.size = "30M"
+sgx.enclave_size = "16G"
+sgx.thread_num = 128
 
 #for remote attesttion
 # Secret Provisioning library (client-side) is preloaded
