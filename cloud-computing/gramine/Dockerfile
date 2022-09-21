@@ -8,7 +8,7 @@ RUN apt-get update \
 ARG SOURCE_DIR=src
 ARG GRAMINE_DIR=gramine
 
-# get the code of pythonexample to /workplace/app
+# get the code of app to /workplace/app
 COPY $SOURCE_DIR/app.js /workplace/app
 
 # set the main function for node app, no need for binnary app
