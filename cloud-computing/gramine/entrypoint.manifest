@@ -13,7 +13,7 @@ fs.start_dir = "/workplace/app"
 sgx.nonpie_binary = 1
 
 # Node.js requires eventfd2() emulation otherwise fails on `(uv_loop_init(&tracing_loop_)) == (0)'
-sys.insecure__allow_eventfd = true
+sys.insecure__allow_eventfd = 1
 
 # !! INSECURE !! Allow passing command-line arguments from the host without validation.
 # Most Docker images rely on runtime arguments and hence, a more general technique is required.
