@@ -23,9 +23,7 @@ RUN npm install figlet@1.x
 COPY $GRAMINE_DIR/entrypoint.manifest /
 RUN python3 -B /var/tmp/finalize_manifest.py
 
-# Dummy key
-
-# sign image
+# sign image with dummy key
 RUN openssl genrsa -3 -out /signer-key.pem 3072
 RUN /graphene/python/graphene-sgx-sign \
         -libpal /graphene/Runtime/libpal-Linux-SGX.so \
