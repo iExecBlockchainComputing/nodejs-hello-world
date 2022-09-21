@@ -2,7 +2,7 @@ FROM docker-regis.iex.ec/iexec-graphene-base:0.6.0
 
 RUN apt-get update \
     && apt-get install -y curl \
-    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
     && apt-get install -y nodejs
 
 ARG SOURCE_DIR=src
