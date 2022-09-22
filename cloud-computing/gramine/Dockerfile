@@ -1,4 +1,5 @@
-FROM docker-regis.iex.ec/iexec-graphene-base:0.6.0
+# FIXME: use tagged version when released
+FROM docker-regis.iex.ec/iexec-graphene-base:65e798a4
 
 RUN apt-get update \
     && apt-get install -y curl \
@@ -19,8 +20,12 @@ WORKDIR /workplace/app
 ### install needed node dependencies (needs to be ran after WORKDIR has been specified)
 RUN npm install figlet@1.x
 
+# Copy the manifest to use from within the base image
+# or create your own
+RUN mv /common-manifests/nodejs.entrypoint.manifest /entrypoint.manifest \
+    && rm -r /common-manifests
+
 # finalize manifest
-COPY $GRAMINE_DIR/entrypoint.manifest /
 RUN python3 -B /var/tmp/finalize_manifest.py
 
 # sign image with dummy key
