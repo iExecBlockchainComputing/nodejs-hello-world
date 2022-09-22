@@ -1,5 +1,5 @@
 # FIXME: use tagged version when released
-FROM docker-regis.iex.ec/iexec-graphene-base:65e798a4
+FROM docker-regis.iex.ec/iexec-graphene-base:39d059c
 
 RUN apt-get update \
     && apt-get install -y curl \
@@ -19,6 +19,8 @@ WORKDIR /workplace/app
 
 ### install needed node dependencies (needs to be ran after WORKDIR has been specified)
 RUN npm install figlet@1.x
+
+RUN ls /
 
 # Copy the manifest to use from within the base image
 # or create your own
