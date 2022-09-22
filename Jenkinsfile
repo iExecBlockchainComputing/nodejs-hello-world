@@ -3,11 +3,12 @@
 buildInfo = getBuildInfo()
 
 baseDir = 'cloud-computing'
-def nativeImage = buildSimpleDocker_v2(
+def nativeImage = buildSimpleDocker_v3(
         buildInfo: buildInfo,
         dockerfileDir: baseDir,
+        buildContext: baseDir,
         dockerImageRepositoryName: 'nodejs-hello-world',
-        imageprivacy: 'public'
+        visibility: 'docker.io'
 )
 
 buildSimpleDocker_v3(
