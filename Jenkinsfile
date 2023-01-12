@@ -1,4 +1,4 @@
-@Library('global-jenkins-library@2.1.1') _
+@Library('global-jenkins-library@2.3.0') _
 
 buildInfo = getBuildInfo()
 
