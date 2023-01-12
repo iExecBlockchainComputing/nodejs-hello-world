@@ -1,5 +1,4 @@
-# FIXME: use tagged version when released
-FROM docker-regis.iex.ec/iexec-graphene-base:0.7.0
+FROM docker-regis.iex.ec/iexec-graphene-base:0.8.0
 
 RUN apt-get update \
     && apt-get install -y curl \
