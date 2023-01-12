@@ -25,8 +25,7 @@ RUN ls /
 
 # Copy the manifest to use from within the base image
 # or create your own
-RUN mv /common-manifests/nodejs.entrypoint.manifest /entrypoint.manifest \
-    && rm -r /common-manifests
+RUN mv /common-manifests/nodejs.entrypoint.manifest /entrypoint.manifest
 
 # Finalize app (finalize manifest and sign app)
 RUN /finalize-app.sh
