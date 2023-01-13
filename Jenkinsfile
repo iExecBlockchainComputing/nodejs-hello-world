@@ -14,7 +14,7 @@ def nativeImage = buildSimpleDocker_v3(
 stage('Build Gramine') {
     gramineBuildInfo = buildInfo.clone()
     dockerfileDir = baseDir + '/gramine'
-    dockerImageRepositoryName = 'tee-gramine-nodejs-hello-world'
+    dockerImageRepositoryName = 'tee-nodejs-hello-world'
     gramineBuildInfo.imageTag += '-gramine'
     visibility = 'iex.ec'
     productionImageName = ''
