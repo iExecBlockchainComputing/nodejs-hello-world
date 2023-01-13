@@ -1,5 +1,4 @@
-# FIXME: use tagged version when released
-FROM docker-regis.iex.ec/iexec-graphene-base:0.7.0
+FROM docker-regis.iex.ec/iexec-graphene-base:0.8.0
 
 RUN apt-get update \
     && apt-get install -y curl \
@@ -25,8 +24,7 @@ RUN ls /
 
 # Copy the manifest to use from within the base image
 # or create your own
-RUN mv /common-manifests/nodejs.entrypoint.manifest /entrypoint.manifest \
-    && rm -r /common-manifests
+RUN cp /common-manifests/nodejs.entrypoint.manifest /entrypoint.manifest
 
 # Finalize app (finalize manifest and sign app)
 RUN /finalize-app.sh
