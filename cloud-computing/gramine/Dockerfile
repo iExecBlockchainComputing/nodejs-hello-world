@@ -1,4 +1,4 @@
-FROM docker-regis.iex.ec/iexec-graphene-base:0.8.0
+FROM docker-regis.iex.ec/iexec-gramine-base:0.9.0
 
 RUN apt-get update \
     && apt-get install -y curl \
