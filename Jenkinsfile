@@ -45,6 +45,6 @@ sconeBuildUnlocked(
         nativeImage: nativeImage,
         imageName: 'nodejs-hello-world',
         imageTag: buildInfo.imageTag,
-        sconifyArgsPath: baseDir + '/sconify.args',
+        sconifyArgsPath: baseDir + '/scone/sconify.args',
         sconifyVersion: '5.7.1'
 )

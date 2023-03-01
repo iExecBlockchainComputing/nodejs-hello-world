@@ -1,0 +1,14 @@
+{
+  "name": "iexec-nodejs-hello-world",
+  "version": "0.0.0",
+  "description": "iExec app hello world",
+  "main": "src/app.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "figlet": "^1.5.2"
+  }
+}
