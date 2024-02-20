@@ -3,6 +3,15 @@
 buildInfo = getBuildInfo()
 dockerIoVisibility = Registries.EXTERNAL_DOCKERIO_HOST
 
+properties(
+    [
+        buildDiscarder(logRotator(numToKeepStr: '10')),
+        parameters([
+                string(defaultValue: '5.7.6', name: 'SCONIFY_VERSION', trim: true)
+        ])
+    ]
+)
+
 baseDir = 'cloud-computing'
 def nativeImage = buildSimpleDocker_v3(
         buildInfo: buildInfo,
@@ -46,5 +55,5 @@ sconeBuildUnlocked(
         imageName: 'nodejs-hello-world',
         imageTag: buildInfo.imageTag,
         sconifyArgsPath: baseDir + '/sconify.args',
-        sconifyVersion: '5.7.1'
+        sconifyVersion: params.SCONIFY_VERSION
 )
