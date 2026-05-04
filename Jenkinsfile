@@ -2,32 +2,12 @@
 
 buildInfo = getBuildInfo()
 
-properties(
-    [
-        buildDiscarder(logRotator(numToKeepStr: '10')),
-        parameters([
-                string(defaultValue: '5.9.1', name: 'SCONIFY_VERSION', trim: true)
-        ])
-    ]
-)
-
-if (params.SCONIFY_VERSION.isEmpty()) {
-    error "SCONIFY_VERSION can't be null or empty"
-}
-
 baseDir = 'cloud-computing'
-def nativeImage = buildSimpleDocker_v3(
+
+buildSimpleDocker_v3(
         buildInfo: buildInfo,
         dockerfileDir: baseDir,
         buildContext: baseDir,
         dockerImageRepositoryName: 'nodejs-hello-world',
         visibility: 'iex.ec'
-)
-
-sconeBuildUnlocked(
-        nativeImage: nativeImage,
-        imageName: 'nodejs-hello-world',
-        imageTag: buildInfo.imageTag,
-        sconifyArgsPath: baseDir + '/sconify.args',
-        sconifyVersion: params.SCONIFY_VERSION
 )
