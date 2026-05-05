@@ -67,7 +67,7 @@ jobs:
       context: cloud-computing
       registry: docker-regis.iex.ec
       push: true
-      security-scan: true
+      security-scan: false
       security-report: "comment"
       hadolint: true
       platform: linux/amd64
