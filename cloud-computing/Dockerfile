@@ -1,8 +1,9 @@
-FROM node:14-alpine3.10
+FROM node:24-alpine3.23
 
-### install your dependencies
-RUN mkdir /app && cd /app && npm install figlet@1.x
+WORKDIR /app
 
-COPY ./src /app
+RUN npm install figlet@1.x
+
+COPY ./src .
 
 ENTRYPOINT [ "node", "/app/app.js"]
